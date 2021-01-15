@@ -1,0 +1,2 @@
+from .singlylinkedlist.singlyLinkedList import LinkedList
+from .doublylinkedlist.doublyLinkedList import DoublyLinkedList
