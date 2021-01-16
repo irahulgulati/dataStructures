@@ -17,8 +17,7 @@ class Node:
 
     # constructor to make data population of node easy
     def __init__(self, data: int, next=None):
-        if not data:
+        if not isinstance(data, int):
             return
         self.data: int = data
-        if next is not None:
-            self.next = next
+        self.next = next

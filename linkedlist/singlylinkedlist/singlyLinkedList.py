@@ -13,17 +13,24 @@ class LinkedList:
     head: Node = None
 
     # addNode method to add signle node to linkedlist
-    def addNode(self, data: int):
+    def addNode(
+        self,
+        data: int
+    ) -> None:
         if self.head is None:
             self.head = Node(data)
         else:
             newNode = Node(data)
             currentNode = self.head
+
             while currentNode.next is not None:
                 currentNode = currentNode.next
             currentNode.next = newNode
 
-    def deleteWithValue(self, data: int):
+    def deleteWithValue(
+        self,
+        data: int
+    ) -> None:
         if self.head is None:
             return
 
@@ -37,7 +44,10 @@ class LinkedList:
 
         currentNode = currentNode.next
 
-    def searchWithValue(self, data: int):
+    def searchWithValue(
+        self,
+        data: int
+    ) -> Node:
         if self.head.data == data:
             return self.head
 
@@ -46,19 +56,26 @@ class LinkedList:
             currentNode = currentNode.next
         return currentNode
 
-    def size(self):
+    def size(
+        self
+    ) -> int:
         size: int = 0
 
         if self.head is None:
             return 0
 
-        currentNode: Node = self.head
-        while currentNode.next is not None:
+        currentNode: Node = self.head     
+        while currentNode:
             size += 1
             currentNode = currentNode.next
+
         return size
 
-    def insertAfterNode(self, prevNode: Node, data: int):
+    def insertAfterNode(
+        self,
+        prevNode: Node,
+        data: int
+    ) -> None:
         if self.size() == 0:
             return
 
@@ -70,7 +87,10 @@ class LinkedList:
         newNode.next = currentNode.next
         currentNode.next = newNode
 
-    def deleteAfterNode(self, prevNode: Node):
+    def deleteAfterNode(
+        self,
+        prevNode: Node
+    ) -> None:
         if self.size() == 0:
             return
 
@@ -82,3 +102,23 @@ class LinkedList:
             return
 
         currentNode.next = currentNode.next.next
+
+    def deleteHead(
+        self
+    ) -> None:
+        if self.head is None:
+            return
+        self.head = self.head.next
+        return
+
+    def insertHead(
+        self,
+        data: int
+    ) -> None:
+        if self.head is None:
+            self.addNode(data)
+            return
+        oldHead: Node = self.head
+        self.head = Node(data)
+        self.head.next = oldHead
+        return
